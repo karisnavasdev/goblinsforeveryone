@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nunito:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: "Helvetica Neue LT Pro";
+  src: local("Helvetica Neue"), local("HelveticaNeue"), local("Arial");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue LT Pro Bold Cd";
+  src: local("Creepster");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue LT Pro Bold";
+  src: local("Helvetica Neue"), local("HelveticaNeue-Bold"), local("Arial Black");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue LT Pro Md";
+  src: local("Helvetica Neue"), local("HelveticaNeue-Medium"), local("Arial");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue LT Pro Italic";
+  src: local("Helvetica Neue"), local("HelveticaNeue"), local("Arial");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}

@@ -1,0 +1,498 @@
+/* ============================================================
+   MATRIX / CODE THEME OVERRIDE
+   Loaded last — overrides style.css + mq.css
+   Palette:  bg #000 / #050d05  text #00ff41  dim #00b32d  accent #39ff14
+   ============================================================ */
+
+:root {
+  --mx-bg: #000000;
+  --mx-bg-2: #030a03;
+  --mx-bg-3: #061306;
+  --mx-green: #00ff41;
+  --mx-green-dim: #00b32d;
+  --mx-green-deep: #003b10;
+  --mx-accent: #39ff14;
+  --mx-mono: "Share Tech Mono", "VT323", "Courier New", Consolas, monospace;
+  --mx-glow: 0 0 4px rgba(0,255,65,.85), 0 0 12px rgba(0,255,65,.45);
+  --mx-glow-soft: 0 0 6px rgba(0,255,65,.35);
+}
+
+/* ---------- Typography reset ---------- */
+html, body,
+body div, body span, body p, body a, body li, body h1, body h2, body h3, body h4, body h5, body h6,
+body .bodySm, body .bodyP, body .bodyMd,
+body .headerXlg, body .headerLg, body .headerMd, body .headerSm {
+  font-family: var(--mx-mono) !important;
+  letter-spacing: 0 !important;
+}
+
+body, body.dark {
+  background-color: var(--mx-bg) !important;
+  color: var(--mx-green) !important;
+}
+
+body * { -webkit-font-smoothing: antialiased; }
+
+body h1, body h2, body h3, body h4, body h5, body h6 {
+  color: var(--mx-green) !important;
+  text-shadow: var(--mx-glow);
+  text-transform: uppercase;
+  letter-spacing: 1px !important;
+  font-weight: 700 !important;
+}
+
+body h1.big, body h2.big {
+  text-shadow: 0 0 6px #00ff41, 0 0 18px rgba(0,255,65,.55), 0 0 36px rgba(0,255,65,.25);
+}
+
+body p, body li, body span, body b, body strong {
+  color: var(--mx-green) !important;
+}
+
+body p b, body p strong { color: #b6ffc4 !important; }
+
+body ::selection      { background: var(--mx-green) !important; color: #000 !important; }
+body ::-moz-selection { background: var(--mx-green) !important; color: #000 !important; }
+
+/* ---------- Matrix rain canvas mount ---------- */
+#matrixCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+/* CRT scanlines + vignette */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,255,65,0.04) 3px,
+      rgba(0,0,0,0) 4px
+    );
+  mix-blend-mode: screen;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.65) 100%);
+}
+
+/* Lift layout above the canvas */
+header, footer, section, .global, #globalFooter, .gridline {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- Backgrounds: kill warm palette, paint dark ---------- */
+.bluebg, .greenbg, .pinkbg, .aquabg, .aquabglt, .tanbg, .yellowbg,
+.orangebg, .orangebglt,
+.gradbg, .gradbg2, .gradbg3, .gradbg4, .gradbg5 {
+  background: var(--mx-bg-2) !important;
+  background-image:
+    linear-gradient(rgba(0,255,65,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,65,0.04) 1px, transparent 1px) !important;
+  background-size: 32px 32px, 32px 32px !important;
+  color: var(--mx-green) !important;
+}
+
+#home-hero.bluebg, footer.bluebg {
+  background: linear-gradient(180deg, #000 0%, #03150a 100%) !important;
+  background-image:
+    radial-gradient(ellipse at top, rgba(0,255,65,0.10), transparent 60%),
+    linear-gradient(rgba(0,255,65,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,65,0.05) 1px, transparent 1px) !important;
+  background-size: auto, 40px 40px, 40px 40px !important;
+}
+
+/* Roadmap section gets darker terminal vibe */
+#home-roadmap.aquabglt {
+  background: var(--mx-bg-2) !important;
+  background-image:
+    linear-gradient(rgba(0,255,65,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,65,0.05) 1px, transparent 1px) !important;
+  background-size: 32px 32px !important;
+}
+
+/* Community / gradient sections */
+#home-community.gradbg2 {
+  background: linear-gradient(180deg, #02100a 0%, #000 100%) !important;
+}
+
+/* ---------- Borders / shadows -> green glow ---------- */
+.round-box-shad, .round-box-shad-nf, .round-box-shadM, .box-shad,
+.rounded-sm-bdr, .bdr {
+  background-color: rgba(0,20,5,0.6) !important;
+  border-color: var(--mx-green) !important;
+  box-shadow: 0 0 0 1px rgba(0,255,65,0.4) inset, 0 0 18px rgba(0,255,65,0.35) !important;
+}
+
+/* Buckets */
+#home-buckets .bucket .card-wrap {
+  background: rgba(0,15,3,0.7) !important;
+  border: 1px solid var(--mx-green) !important;
+  box-shadow: 0 0 0 1px rgba(0,255,65,0.4) inset, 0 0 22px rgba(0,255,65,0.3) !important;
+  padding: 24px !important;
+  border-radius: 4px !important;
+}
+
+#home-buckets .bucket-img1 img {
+  filter: grayscale(1) brightness(1.2) sepia(1) hue-rotate(60deg) saturate(8) contrast(1.1);
+}
+
+/* Hero goblin images: tint green */
+#home-hero img,
+#home-community img,
+.bgshape img,
+.background img {
+  filter: grayscale(1) brightness(0.95) sepia(1) hue-rotate(60deg) saturate(7) contrast(1.05);
+}
+
+/* Logo */
+.logo-up img, .logo-main img {
+  filter: drop-shadow(0 0 6px var(--mx-green)) brightness(1.1) hue-rotate(60deg) saturate(4);
+}
+
+/* Ticker images glow */
+.ticker-sep img, .scroll-group img, .scroll-group1 video {
+  filter: hue-rotate(60deg) saturate(5) brightness(1.05) contrast(1.1);
+}
+
+/* ---------- Buttons: terminal style ---------- */
+.cta-btn, .cta-btn:not(.split) {
+  color: var(--mx-green) !important;
+  background: rgba(0,20,5,0.85) !important;
+  background-color: rgba(0,20,5,0.85) !important;
+  border: 1px solid var(--mx-green) !important;
+  border-color: var(--mx-green) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 0 12px rgba(0,255,65,0.45), 0 0 0 1px rgba(0,255,65,0.4) inset !important;
+  text-transform: uppercase;
+  letter-spacing: 1px !important;
+  font-family: var(--mx-mono) !important;
+  text-shadow: var(--mx-glow-soft);
+}
+
+.cta-btn.split .cta-txt,
+.cta-btn.split .cta-arr {
+  background: rgba(0,20,5,0.85) !important;
+  background-color: rgba(0,20,5,0.85) !important;
+  border-color: var(--mx-green) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 0 10px rgba(0,255,65,0.35) !important;
+}
+.cta-btn.split .cta-txt {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.cta-btn.split .cta-arr {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+/* Hover: keep the two halves connected — only intensify the glow.
+   The original design splits the arrow off on hover (translateX +
+   pill radius) which looks broken in this palette. */
+.cta-btn.split:hover .cta-txt {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right-width: 0 !important;
+  transform: none !important;
+}
+.cta-btn.split:hover .cta-arr {
+  border-radius: 0 4px 4px 0 !important;
+  border-left-color: var(--mx-green) !important;
+  border-left-width: 0 !important;
+  transform: none !important;
+}
+.cta-btn.split:hover .arr {
+  border-radius: 4px !important;
+  transform: none !important;
+}
+.cta-btn:hover,
+.cta-btn.split:hover .cta-txt,
+.cta-btn.split:hover .cta-arr {
+  box-shadow: 0 0 22px rgba(0,255,65,0.9),
+              0 0 0 1px rgba(0,255,65,0.75) inset !important;
+}
+.cta-btn.split:hover .cta-txt { color: var(--mx-accent) !important; }
+
+.has-arr .arr {
+  background: var(--mx-green) !important;
+  background-color: var(--mx-green) !important;
+  box-shadow: 0 0 10px rgba(0,255,65,0.85) !important;
+  border-radius: 4px !important;
+}
+.has-arr .arr img { filter: brightness(0) invert(0); }
+
+/* (removed) leading >_ chip — caused a detached box on split buttons */
+
+/* Underline buttons */
+a.ul-btn, p a {
+  color: var(--mx-green) !important;
+  text-decoration: underline !important;
+  text-shadow: var(--mx-glow-soft);
+}
+a.ul-btn:hover { color: var(--mx-accent) !important; }
+
+/* ---------- Top BUY $GOBLIN button (replaces removed header) ---------- */
+#topBuyBtn {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  z-index: 1000;
+  display: inline-block;
+  padding: 10px 18px;
+  font-family: var(--mx-mono);
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--mx-green);
+  background: rgba(0, 18, 5, 0.92);
+  border: 1px solid var(--mx-green);
+  border-radius: 6px;
+  box-shadow: 0 0 14px rgba(0, 255, 65, 0.55),
+              0 0 0 1px rgba(0, 255, 65, 0.4) inset;
+  text-shadow: var(--mx-glow-soft);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .2s ease-out;
+}
+#topBuyBtn:hover {
+  color: #000;
+  background: var(--mx-green);
+  box-shadow: 0 0 22px rgba(0, 255, 65, 0.95),
+              0 0 0 1px rgba(0, 255, 65, 0.9) inset;
+  text-shadow: none;
+}
+
+/* ---------- Roadmap module ---------- */
+.rm-module.module {
+  background: rgba(0,15,3,0.6) !important;
+  border: 1px solid var(--mx-green) !important;
+  box-shadow: 0 0 24px rgba(0,255,65,0.35), 0 0 0 1px rgba(0,255,65,0.4) inset !important;
+}
+.rm-year h2 {
+  color: var(--mx-accent) !important;
+  text-shadow: var(--mx-glow);
+}
+.has-check li, .has-check li::before, ul.has-check li {
+  color: var(--mx-green) !important;
+}
+.has-check li::before { content: "[+] " !important; color: var(--mx-accent); }
+.slide-arrow { filter: hue-rotate(60deg) saturate(5) brightness(1.4); }
+.slide-arrow img { filter: brightness(0) invert(1) sepia(1) hue-rotate(60deg) saturate(8); }
+
+/* Hide decorative roadmap shapes — they look out of place */
+#home-roadmap .background .base img { opacity: 0.15; filter: hue-rotate(60deg) saturate(8) brightness(0.8); }
+
+/* ---------- Footer ---------- */
+#globalFooter { color: var(--mx-green) !important; }
+#globalFooter h2, #globalFooter h3, #globalFooter p, #globalFooter a, #globalFooter li {
+  color: var(--mx-green) !important;
+}
+.newsletter-callout.bdr {
+  background: rgba(0,15,3,0.7) !important;
+  border: 1px solid var(--mx-green) !important;
+  box-shadow: 0 0 18px rgba(0,255,65,0.35) !important;
+}
+.footer-links li.title { color: var(--mx-accent) !important; text-shadow: var(--mx-glow); }
+.footer-links a:hover { color: var(--mx-accent) !important; }
+
+.social-links {
+  border-top: 1px solid var(--mx-green) !important;
+  margin-top: 60px;
+}
+.social-links li {
+  border-color: var(--mx-green) !important;
+}
+.social-links .icon {
+  color: var(--mx-green) !important;
+  text-shadow: var(--mx-glow);
+}
+/* SVG icons use fill='currentColor' inside a data URI — that does NOT
+   inherit from the parent when loaded as a background-image. Recolor
+   the resulting black glyphs to matrix green via a filter. */
+.social-links .icon::before,
+.social-links .icon-x::before,
+.social-links .icon-telegram::before {
+  filter: invert(67%) sepia(85%) saturate(3500%) hue-rotate(85deg)
+          brightness(115%) contrast(105%)
+          drop-shadow(0 0 5px rgba(0,255,65,0.65));
+}
+/* Make the empty overlay anchor clearly clickable above the icon/h3 */
+.social-links li { cursor: pointer; }
+.social-links li a {
+  z-index: 5 !important;
+  cursor: pointer;
+}
+.social-links li:hover .icon::before {
+  filter: invert(78%) sepia(96%) saturate(4500%) hue-rotate(80deg)
+          brightness(125%)
+          drop-shadow(0 0 10px rgba(0,255,65,0.95));
+}
+.social-links li:hover { background: rgba(0, 255, 65, 0.06); }
+
+/* ---------- Gridlines (decorative) ---------- */
+.gridline {
+  background-color: rgba(0,255,65,0.08) !important;
+}
+
+/* ---------- News callout (outer = transparent; pill style is below) ---------- */
+.news-callout {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.news-callout p, .news-callout a { color: var(--mx-green) !important; }
+
+/* ---------- Misc text adjustments ---------- */
+.headerXlg, .headerLg, .headerMd, .headerSm {
+  letter-spacing: 0 !important;
+}
+
+/* Strip the chunky rounded corners — terminal panels are sharper */
+.rounded     { border-radius: 4px !important; }
+.rounded-top { border-radius: 4px 4px 0 0 !important; }
+.rounded-sm, .rounded-sm-bdr { border-radius: 4px !important; }
+
+/* Blinking terminal cursor on the hero h1 */
+#home-hero h1.big::after {
+  content: "_";
+  display: inline-block;
+  margin-left: 8px;
+  color: var(--mx-accent);
+  animation: mxBlink 1s steps(1) infinite;
+  text-shadow: var(--mx-glow);
+}
+@keyframes mxBlink { 50% { opacity: 0; } }
+
+/* Subtle flicker on big headings */
+@keyframes mxFlicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.85; }
+}
+body h1.big, body h2.big { animation: mxFlicker 6s infinite; }
+
+/* Make sure content sits over the rain */
+.max-wrap, .pad-wrap { position: relative; z-index: 2; }
+
+/* ============================================================
+   FIXES (round 2)
+   ============================================================ */
+
+/* --- Hero: force center alignment on heading + body --- */
+#home-hero .max-wrap.header,
+#home-hero header,
+#home-hero header h1,
+#home-hero header p,
+#home-hero header .cta-group {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+#home-hero header h1.big {
+  display: block;
+  width: 100%;
+}
+/* Don't let the blinking cursor push centering — render it absolutely */
+#home-hero h1.big { position: relative; }
+#home-hero h1.big::after {
+  position: static;
+  margin-left: 6px;
+}
+
+/* --- "ENTER APP" news-callout: keep its original absolute position inside hero,
+       just restyle the pill to match the matrix theme --- */
+.news-callout .inner {
+  background: rgba(0, 18, 5, 0.92) !important;
+  border: 1px solid var(--mx-green) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 0 18px rgba(0, 255, 65, 0.55),
+              0 0 0 1px rgba(0, 255, 65, 0.4) inset !important;
+  height: auto !important;
+  padding: 6px 16px !important;
+}
+.news-callout .inner p { margin: 0 !important; }
+.news-callout .inner p,
+.news-callout .inner a,
+.news-callout a.ul-btn {
+  color: var(--mx-green) !important;
+  font-size: 14px !important;
+  font-family: var(--mx-mono) !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  text-shadow: var(--mx-glow);
+}
+.news-callout a.ul-btn:hover { color: var(--mx-accent) !important; }
+
+/* --- Roadmap: kill the cream card, fix arrows --- */
+.rm-module .module-contents .rm-contents,
+#home-roadmap .rm-contents {
+  background: rgba(0, 18, 5, 0.85) !important;
+  border: 1px solid var(--mx-green) !important;
+  box-shadow: 0 0 18px rgba(0, 255, 65, 0.35),
+              0 0 0 1px rgba(0, 255, 65, 0.4) inset !important;
+  border-radius: 6px !important;
+}
+#home-roadmap .rm-slide,
+#home-roadmap .rm-slide.inner.module {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+#home-roadmap .has-check li,
+#home-roadmap ul.has-check li,
+#home-roadmap .rm-contents li,
+#home-roadmap .rm-contents p {
+  color: var(--mx-green) !important;
+  border-color: rgba(0, 255, 65, 0.25) !important;
+  text-shadow: 0 0 4px rgba(0, 255, 65, 0.4);
+}
+/* Replace the original check icon with our [+] marker */
+#home-roadmap .has-check li::before,
+#home-roadmap ul.has-check li::before {
+  content: "[+]" !important;
+  color: var(--mx-accent) !important;
+  background: none !important;
+  background-image: none !important;
+  width: auto !important;
+  height: auto !important;
+  font-family: var(--mx-mono) !important;
+  font-size: 14px !important;
+  margin-right: 8px !important;
+  text-shadow: var(--mx-glow);
+}
+
+/* Slide arrows — strip the cyan tint, force green */
+#home-roadmap .slide-arrow,
+.slide-arrow {
+  filter: none !important;
+}
+#home-roadmap .slide-arrow img,
+.slide-arrow img {
+  /* turn arbitrary-colored arrow into bright matrix green */
+  filter: brightness(0) saturate(100%)
+          invert(74%) sepia(63%) saturate(2618%) hue-rotate(85deg)
+          brightness(115%) contrast(105%)
+          drop-shadow(0 0 4px rgba(0,255,65,0.85)) !important;
+}
+
+/* Roadmap year heading: stronger glow */
+#home-roadmap .rm-year h2 {
+  color: var(--mx-green) !important;
+  text-shadow: 0 0 6px #00ff41, 0 0 18px rgba(0,255,65,0.55);
+}
