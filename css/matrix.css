@@ -247,7 +247,7 @@ a.ul-btn, p a {
 }
 a.ul-btn:hover { color: var(--mx-accent) !important; }
 
-/* ---------- Top BUY $GOBLIN button (replaces removed header) ---------- */
+/* ---------- Top BUY $GOBLINS button (replaces removed header) ---------- */
 #topBuyBtn {
   position: fixed;
   top: 18px;
